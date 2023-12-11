@@ -1,7 +1,5 @@
 doctrine:
     dbal:
-        url: '%env(resolve:DATABASE_URL)%'
-
         default_connection : navire
         
         connections: 
