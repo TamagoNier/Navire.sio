@@ -33,6 +33,27 @@ class Navire
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $eta = null;
 
+    #[ORM\Column]
+    #[Assert\Range(
+            min: 1,
+            notInRangeMessage: 'La longueur doit etre positive',
+    )]
+    private ?int $longueur = null;
+
+    #[ORM\Column]
+    #[Assert\Range(
+            min: 1,
+            notInRangeMessage: 'La largeur doit etre positive',
+    )]
+    private ?int $largeur = null;
+
+    #[ORM\Column]
+    private ?float $tirantdeau = null;
+
+    #[ORM\ManyToOne(inversedBy: 'navires')]
+    #[ORM\JoinColumn(name:'idaisshiptype', referencedColumnName:'id', nullable: false)]
+    private ?AisShipType $aisShipType = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -94,6 +115,54 @@ class Navire
     public function setEta(?\DateTimeInterface $eta): static
     {
         $this->eta = $eta;
+
+        return $this;
+    }
+
+    public function getLongueur(): ?int
+    {
+        return $this->longueur;
+    }
+
+    public function setLongueur(int $longueur): static
+    {
+        $this->longueur = $longueur;
+
+        return $this;
+    }
+
+    public function getLargeur(): ?int
+    {
+        return $this->largeur;
+    }
+
+    public function setLargeur(int $largeur): static
+    {
+        $this->largeur = $largeur;
+
+        return $this;
+    }
+
+    public function getTirantdeau(): ?float
+    {
+        return $this->tirantdeau;
+    }
+
+    public function setTirantdeau(float $tirantdeau): static
+    {
+        $this->tirantdeau = $tirantdeau;
+
+        return $this;
+    }
+
+    public function getTypeNavire(): ?AisShipType
+    {
+        return $this->typeNavire;
+    }
+
+    public function setTypeNavire(?AisShipType $typeNavire): static
+    {
+        $this->typeNavire = $typeNavire;
 
         return $this;
     }
