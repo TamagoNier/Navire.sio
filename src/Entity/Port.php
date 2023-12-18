@@ -2,14 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\PaysRepository;
+use App\Repository\PortRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Table (name:'pays')]
-#[Assert\Unique(fields: ['indicatif'])]
-#[ORM\Entity(repositoryClass: PaysRepository::class)]
-#[ORM\Index(name:'ind_indicatif', columns:['indicatif'])]
-class Pays
+#[ORM\Entity(repositoryClass: PortRepository::class)]
+class Port
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -19,8 +16,7 @@ class Pays
     #[ORM\Column(length: 70)]
     private ?string $nom = null;
 
-    #[ORM\Column(name:'indicatif', length: 3)]
-    #[ORM\Regex(pattern:"/[A-Z]{3}/", message:"L'indicatif Pays a strictement 3 caractères")]
+    #[ORM\Column(length: 5)]
     private ?string $Indicatif = null;
 
     public function getId(): ?int
