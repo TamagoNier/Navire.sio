@@ -54,6 +54,10 @@ class Navire
     #[ORM\JoinColumn(name:'idaisshiptype', referencedColumnName:'id', nullable: false)]
     private ?AisShipType $aisShipType = null;
 
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(name:'idpays', referencedColumnName:'id', nullable: false)]
+    private ?Pays $pavillon = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -163,6 +167,18 @@ class Navire
     public function setTypeNavire(?AisShipType $typeNavire): static
     {
         $this->typeNavire = $typeNavire;
+
+        return $this;
+    }
+
+    public function getPavillon(): ?Pays
+    {
+        return $this->pavillon;
+    }
+
+    public function setPavillon(?Pays $pavillon): static
+    {
+        $this->pavillon = $pavillon;
 
         return $this;
     }
