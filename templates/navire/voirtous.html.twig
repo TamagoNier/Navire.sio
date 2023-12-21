@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voir Tous{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col" style="width:100px">IMO</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">MMSI</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">ETA</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for navire in navires %}
+                    <tr class="table-primary">
+                        <td>{{ navire.getImo() }}</td>
+                        <td>{{ navire.getNom() }}</td>
+                        <td>{{ navire.getMmsi() }}</td>
+                        <td>{{ navire.getType().getLibelle() }}</td>
+                        <td>{{ navire. }}</td>
+                        <td>{{ navire }}</td>
+                        <td><button class="btn btn-primary" href="#">Editer</button></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
