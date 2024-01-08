@@ -66,4 +66,15 @@
         <button type='submit' style='width:100px' class='btn btn-success'>Modifier</button>
         {{ form_end(form) }}
     </div>
+    <script type="text/javascript">
+        // Map appearance
+        var width = "100%";         // width in pixels or percentage
+        var height = "300";         // height in pixels
+        var names = true;           // always show ship names (defaults to false)
+
+        // Single ship tracking
+        var imo = {{ navire.getImo() }};        // display latest position (by IMO, overrides MMSI)
+        var show_track = true;      // display track line (last 24 hours)
+    </script>
+    <script type="text/javascript" src="https://www.vesselfinder.com/aismap.js"></script>
 {% endblock %}

@@ -37,7 +37,7 @@ class NavireController extends AbstractController
         
         return $this->render('navire/edit.html.twig', [
             'form'=>$form->createView(),
-            ''
+            'navire'=>$navire,
         ]);
     }
 }
