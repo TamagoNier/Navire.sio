@@ -22,9 +22,9 @@
                         <td>{{ navire.getImo() }}</td>
                         <td>{{ navire.getNom() }}</td>
                         <td>{{ navire.getMmsi() }}</td>
-                        <td>{{ navire.getType().getLibelle() }}</td>
-                        <td>{{ navire. }}</td>
-                        <td>{{ navire }}</td>
+                        <td>{{ navire.getTypeNavire().getLibelle() }}</td>
+                        <td>{{ navire.getDestination().getIndicatif() }}({{ navire.getDestination().getPays().getNom() }})</td>
+                        <td>{{ navire.getEta()|date('Y-m-d H:m') }}</td>
                         <td><button class="btn btn-primary" href="#">Editer</button></td>
                     </tr>
                 {% endfor %}
