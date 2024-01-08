@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\EntityType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\AisShipType;
 use App\Entity\Pays;
 use App\Entity\Port;
@@ -19,17 +19,17 @@ class NavireType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('indicatifAppel', TextType::class)
-            ->add('indicatifAppel', TextType::class)
-            ->add('indicatifAppel', TextType::class)
+            ->add('imo', TextType::class)
+            ->add('nom', TextType::class)
+            ->add('mmsi', TextType::class)
             ->add('indicatifAppel', TextType::class)
             ->add('eta', DateTimeType::class,['widget'=>'single_text'])
-            ->add('largeur', IntegerType::class)
+            ->add('longueur', IntegerType::class)
             ->add('largeur', IntegerType::class)
             ->add('tirantdeau', NumberType::class, array(
-                'scale'=>1
+                'scale'=>1,
             ))
-            ->add('aisShipType', EntityType::class, [
+            ->add('typeNavire', EntityType::class, [
                 'class'=> AisShipType::class,
                 'choice_label'=>'libelle'
                 ])
@@ -37,8 +37,8 @@ class NavireType extends AbstractType
                 'class'=>Pays::class,
                 'choice_label'=>'nom'
                 ])
-            ->add('destination', EntityYype::class, [
-                'class'=>Pays::class,
+            ->add('destination', EntityType::class, [
+                'class'=>Port::class,
                 'choice_label'=>'nom'
                 ])
         ;

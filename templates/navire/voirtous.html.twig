@@ -25,7 +25,7 @@
                         <td>{{ navire.getTypeNavire().getLibelle() }}</td>
                         <td>{{ navire.getDestination().getIndicatif() }}({{ navire.getDestination().getPays().getNom() }})</td>
                         <td>{{ navire.getEta()|date('Y-m-d H:m') }}</td>
-                        <td><button class="btn btn-primary" href="{{ path('navire_editer', {id:navire.getId()}) }}">Editer</button></td>
+                        <td><a class="btn btn-primary" href="{{ path('navire_editer', {id:navire.getId()}) }}">Editer</a></td>
                     </tr>
                 {% endfor %}
             </tbody>

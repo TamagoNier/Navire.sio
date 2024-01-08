@@ -32,11 +32,12 @@ class NavireController extends AbstractController
             $navire = $form->getData();
             $em->persist($navire);
             $em->flush();
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('home_homepage');
         }
         
         return $this->render('navire/edit.html.twig', [
             'form'=>$form->createView(),
+            ''
         ]);
     }
 }
