@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\SecurityBundle\SecurityBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,6 +16,7 @@ use App\Entity\Port;
 class PortController extends AbstractController
 {
     #[Route('/creer', name:'creer')]
+    #[IsGranted('ROLE_ADMIN')]
     public function creer(Request $request, EntityManagerInterface $em): Response{
         $port = new Port();
         $form = $this->createForm(PortType::class, $port);
