@@ -21,7 +21,9 @@ class NavireController extends AbstractController
            'navires' =>$navires, 
         ]);
     }
+    
     #[Route('/editer/{id}', name:'editer')]
+    #[IsGranted('ROLE_ADMIN')]
     public function editer(int $id, Request $request, NavireRepository $repo, EntityManagerInterface $em): Response{
         $navire = $repo->find($id);
         
