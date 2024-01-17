@@ -16,8 +16,8 @@ use App\Entity\Port;
 class PortController extends AbstractController
 {
     #[Route('/creer', name:'creer')]
-    #[IsGranted('ROLE_ADMIN')]
     public function creer(Request $request, EntityManagerInterface $em): Response{
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'ROLE_ADMIN Nécessaire');
         $port = new Port();
         $form = $this->createForm(PortType::class, $port);
         $form->handleRequest($request);
